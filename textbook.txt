@@ -1,4 +1,4 @@
-***Create New Project***
+****Create New Project****
 	composer create-project symfony/website-skeleton TodoApp
 
 		* Run your application:
@@ -43,7 +43,7 @@
 		in webpack.config.js
 
 
-***Database***
+****Database****
 	sudo apt install sqlite // install sqlite
 	sqlite3 todoapp // command to create database
 
@@ -52,3 +52,13 @@
 	.quit // exit DB shell
 
 	DATABASE_URL="sqlite:///home/yuriy/Workspace/Sandbox/symfony5/TodoApp/todoapp" // .env.local changed DB connect line
+
+
+****React****
+	install:
+		yarn add @babel/preset-react --dev
+ 		yarn add react react-dom prop-types
+
+****Dev server****
+	yarn encore dev --watch
+	/home/yuriy/.symfony/bin/symfony server:start // or symfony server:start if symfony is set globally
