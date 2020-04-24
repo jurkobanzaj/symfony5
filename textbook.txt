@@ -62,3 +62,6 @@
 ****Dev server****
 	yarn encore dev --watch
 	/home/yuriy/.symfony/bin/symfony server:start // or symfony server:start if symfony is set globally
+
+****PHP****
+	php --ini //displays loaded ini file and it's path
