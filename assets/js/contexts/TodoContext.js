@@ -9,18 +9,20 @@ export default class TodoContextProvider extends Component {
         this.state = {
              todos: [
                 {
-                    task: 'Learn Symfony'
+                    name: 'Learn Symfony'
                 },
                 {
-                    task: 'Do a breakfast'
+                    name: 'Do a breakfast'
                 }
             ]
         }
     }
 
     //create
-    createTodo() {
-
+    createTodo(todo) {
+        var todos = [...this.state.todos];
+        todos.push(todo);
+        this.setState({todos});
     }
 
     //rea
