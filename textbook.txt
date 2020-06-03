@@ -53,7 +53,7 @@
 
 		DATABASE_URL="sqlite:///home/yuriy/Workspace/Sandbox/symfony5/TodoApp/todoapp" // .env.local changed DB connect line !!! DID NOT WORKED OUT!
 		
-		DATABASE_URL="sqlite:///todoapp.db" // this was correct one
+		DATABASE_URL="sqlite:///%kernel.project_dir%/todoapp.db" // this was correct one
 
 		php bin/console make:migration
 
