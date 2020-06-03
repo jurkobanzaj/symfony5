@@ -48,10 +48,28 @@
 	sqlite3 todoapp // command to create database
 
 	**SQLite**
-	.databases // show databases
-	.quit // exit DB shell
+		.databases // show databases
+		.quit // exit DB shell
 
-	DATABASE_URL="sqlite:///home/yuriy/Workspace/Sandbox/symfony5/TodoApp/todoapp" // .env.local changed DB connect line
+		DATABASE_URL="sqlite:///home/yuriy/Workspace/Sandbox/symfony5/TodoApp/todoapp" // .env.local changed DB connect line !!! DID NOT WORKED OUT!
+		
+		DATABASE_URL="sqlite:///todoapp.db" // this was correct one
+
+		php bin/console make:migration
+
+		* View table content *
+			sqlite> .header on
+			sqlite> .mode column
+			sqlite> pragma table_info(todo)
+
+		* Add data *
+			insert into todo values(1, 'Learn something new and usefull');
+
+		* View data *
+			select * from todo;
+
+		* Drop table *
+			delete from todo;
 
 
 ****React****

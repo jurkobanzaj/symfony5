@@ -9,9 +9,11 @@ export default class TodoContextProvider extends Component {
         this.state = {
              todos: [
                 {
+                    id: 0,
                     name: 'Learn Symfony'
                 },
                 {
+                    id: 1,
                     name: 'Do a breakfast'
                 }
             ]
@@ -31,8 +33,11 @@ export default class TodoContextProvider extends Component {
     }
 
     //update
-    updateTodo() {
-
+    updateTodo(data) {
+        var todos = [...this.state.todos];
+        let todo = todos.find(todo => todo.id === data.id);
+        todo.name = data.name;
+        this.setState({todos});
     }
 
     //delete
