@@ -15,9 +15,17 @@ export default class TodoContextProvider extends Component {
 
     //create
     createTodo(todo) {
-        var todos = [...this.state.todos];
-        todos.push(todo);
-        this.setState({ todos });
+        axios.post('api/todo/create', todo)
+            .then(response => {
+                let data = [...this.state.todos];
+                data.push(response.data.todo);
+                this.setState({
+                    todos: data
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
 
     //readTodo
