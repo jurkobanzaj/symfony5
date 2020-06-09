@@ -93,10 +93,14 @@ class TodoController extends AbstractController
     public function delete(Todo $todo)
     {
         try {
-            $this->entityManager->remove($todo);
-            $this->entityManager->flush();
+            $this->entityManager->remove($todo); // removes record
+            $this->entityManager->flush(); // writes DB
         } catch (Exception $exception) {
             //handle error
         }
+
+        return $this->json([
+            'message' => 'Todo has been deleted'
+        ]);
     }
 }

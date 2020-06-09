@@ -15,7 +15,7 @@ export default class TodoContextProvider extends Component {
 
     //create
     createTodo(todo) {
-        axios.post('api/todo/create', todo)
+        axios.post('/api/todo/create', todo)
             .then(response => {
                 let data = [...this.state.todos];
                 data.push(response.data.todo);
@@ -56,7 +56,24 @@ export default class TodoContextProvider extends Component {
     }
 
     //delete
-    deleteTodo() {}
+    deleteTodo(data) {
+        axios.delete('/api/todo/delete/' + data.id)
+            .then(response => {
+                let todos = [...this.state.todos];
+                let todo = todos.find(todo => {
+                    return todo.id === data.id;
+                });
+
+                todos.splice(todos.indexOf(todo), 1);
+
+                this.setState({
+                    todos
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
 
     render() {
         return (
