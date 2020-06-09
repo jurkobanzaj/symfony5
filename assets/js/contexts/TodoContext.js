@@ -43,10 +43,16 @@ export default class TodoContextProvider extends Component {
 
     //update
     updateTodo(data) {
-        var todos = [...this.state.todos];
-        let todo = todos.find((todo) => todo.id === data.id);
-        todo.name = data.name;
-        this.setState({ todos });
+        axios.put('api/todo/update/' + data.id, data)
+            .then(response => {
+                var todos = [...this.state.todos];
+                let todo = todos.find((todo) => todo.id === data.id);
+                todo.name = data.name;
+                this.setState({ todos });
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
 
     //delete
