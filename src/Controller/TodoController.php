@@ -39,13 +39,17 @@ class TodoController extends AbstractController
         try {
             $this->entityManager->persist($todo);
             $this->entityManager->flush(); // updates DB
-            return $this->json([
-                'todo' => $todo->toArray(),
-            ]);
         } catch (Exception $exception) 
         {
-            // add error handling 
+            return $this->json([
+                'message' => ['text' => ['Could not save To-Do in the database'], 'level' => 'error']
+            ]);
         }
+
+        return $this->json([
+            'todo' => $todo->toArray(),
+            'message' => ['text' => ['To-Do has been created', 'Task: ' . $content->name], 'level' => 'success']
+        ]);
     }
 
     /**

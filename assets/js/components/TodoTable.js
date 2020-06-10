@@ -89,9 +89,8 @@ export default function TodoTable() {
                     </TableBody>
                 </Table>
             </form>
-            {todoToDelete ? 
+            {todoToDelete &&
                 <DeleteDialog open={deleteConfirmationIsShown} setDeleteConfirmationIsShown={setDeleteConfirmationIsShown} todo={todoToDelete} />
-                : null
             }
         </Fragment>
     );
