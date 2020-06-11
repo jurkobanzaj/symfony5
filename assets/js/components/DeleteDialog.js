@@ -34,7 +34,7 @@ export default function DeleteDialog({ open, setDeleteConfirmationIsShown, todo 
 DeleteDialog.propTypes = {
     open: PropTypes.bool.isRequired,
     setDeleteConfirmationIsShown: PropTypes.func.isRequired,
-    todoId: PropTypes.shape({
+    todo: PropTypes.shape({
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired
     })
