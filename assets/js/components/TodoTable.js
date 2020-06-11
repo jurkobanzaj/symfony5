@@ -42,7 +42,7 @@ export default function TodoTable() {
                     <TableRow>
                         <TableCell>
                             <TextField
-                                type='text'
+                                type="text"
                                 value={addTodo}
                                 onChange={(e) => setAddTodo(e.target.value)}
                                 label="New Task"
@@ -64,7 +64,7 @@ export default function TodoTable() {
                                     {editIsShown === todo.id ? (
                                         <form onSubmit={onCreateSubmit}>
                                             <TextField
-                                                type='text'
+                                                type="text"
                                                 value={editTodo}
                                                 onChange={(e) => setEditTodo(e.target.value)}
                                                 InputProps={{
@@ -78,7 +78,7 @@ export default function TodoTable() {
                                                             >
                                                                 <CloseIcon />
                                                             </IconButton>
-                                                            <IconButton onClick={e => onEditSubmit(e, todo.id)}>
+                                                            <IconButton onClick={(e) => onEditSubmit(e, todo.id)}>
                                                                 <DoneIcon />
                                                             </IconButton>
                                                         </Fragment>

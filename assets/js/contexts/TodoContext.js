@@ -64,9 +64,9 @@ export default class TodoContextProvider extends Component {
                     var todos = [...this.state.todos];
                     let todo = todos.find((todo) => todo.id === data.id);
                     todo.name = data.name;
-                    this.setState({ 
+                    this.setState({
                         todos,
-                        message: response.data.message
+                        message: response.data.message,
                     });
                 }
             })
@@ -94,7 +94,7 @@ export default class TodoContextProvider extends Component {
 
                     this.setState({
                         todos,
-                        message: response.data.message
+                        message: response.data.message,
                     });
                 }
             })

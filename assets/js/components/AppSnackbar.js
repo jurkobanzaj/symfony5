@@ -4,7 +4,7 @@ import { Snackbar, SnackbarContent, Button } from '@material-ui/core';
 import { TodoContext } from '../contexts/TodoContext';
 
 function checkLevel(level) {
-    switch(level) {
+    switch (level) {
         case 'success':
             return 'green';
         case 'error':
@@ -20,7 +20,7 @@ function AppSnackbar() {
         <Snackbar autoHideDuration={6000} open={Boolean(context.message.text)}>
             {context.message.text && (
                 <SnackbarContent
-                    style={{backgroundColor: checkLevel(context.message.level)}}
+                    style={{ backgroundColor: checkLevel(context.message.level) }}
                     message={context.message.text.map((text, i) => (
                         <Fragment key={`${i} ${text}`}>
                             <span>{text}</span>
@@ -28,7 +28,7 @@ function AppSnackbar() {
                         </Fragment>
                     ))}
                     action={[
-                        <Button key="dismiss" onClick={() => context.setMessage({})} color='inherit'>
+                        <Button key="dismiss" onClick={() => context.setMessage({})} color="inherit">
                             Dismiss
                         </Button>,
                     ]}

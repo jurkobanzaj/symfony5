@@ -8,13 +8,13 @@ import { CssBaseline } from '@material-ui/core';
 export default class App extends Component {
     render() {
         return (
-			<TodoContextProvider>
-				<CssBaseline>
-					<TodoTable />
-					<AppSnackbar />
-				</CssBaseline>
-			</TodoContextProvider>
-		);
+            <TodoContextProvider>
+                <CssBaseline>
+                    <TodoTable />
+                    <AppSnackbar />
+                </CssBaseline>
+            </TodoContextProvider>
+        );
     }
 }
 
