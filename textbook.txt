@@ -97,3 +97,9 @@
 			php bin/console doctrine:migrations:migrate
 	NOTE:
 		sqlite don't let to create NOT NULL column with empty cells. So you have to let it be null or to provide default value
+
+****FORM****
+
+	create:
+		php bin/console make:from
+		This creates class and entity. Entity name should be uppercase

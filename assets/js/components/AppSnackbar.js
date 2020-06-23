@@ -20,7 +20,7 @@ function AppSnackbar() {
         <Snackbar autoHideDuration={6000} open={Boolean(context.message.text)}>
             {context.message.text && (
                 <SnackbarContent
-                    style={{ backgroundColor: checkLevel(context.message.level) }}
+                    style={{ backgroundColor: checkLevel(context.message.level), whiteSpace: 'pre' }}
                     message={context.message.text.map((text, i) => (
                         <Fragment key={`${i} ${text}`}>
                             <span>{text}</span>

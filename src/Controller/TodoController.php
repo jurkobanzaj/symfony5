@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Todo;
+use App\Form\TodoType;
 use App\Repository\TodoRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
@@ -33,8 +34,23 @@ class TodoController extends AbstractController
     public function create(Request $request)
     {
         $content = json_decode($request->getContent());
+
+        $form = $this->createForm(TodoType::class);
+        $form->submit((array)$content);
+
+        if (!$form->isValid()) {
+            $errors = [];
+            foreach ($form->getErrors(true, true) as $error) {
+                $propertyName = $error->getOrigin()->getName();
+                $errors[$propertyName] = $error->getMessage();
+            }
+            return $this->json([
+                'message' => ['text' => [join("\n", $errors)], 'level' => 'error']
+            ]);
+        }
+
         $todo = new Todo();
-        $todo->setName($content->name);
+        $todo->setTask($content->task);
         $todo->setDescription($content->description);
 
         try {
@@ -49,7 +65,7 @@ class TodoController extends AbstractController
 
         return $this->json([
             'todo' => $todo->toArray(),
-            'message' => ['text' => ['To-Do has been created', 'Task: ' . $content->name], 'level' => 'success']
+            'message' => ['text' => ['To-Do has been created', 'Task: ' . $content->task], 'level' => 'success']
         ]);
     }
 
@@ -78,14 +94,30 @@ class TodoController extends AbstractController
     {
         $content = json_decode($request->getContent());
 
-        if($todo->getName() === $content->name && $todo->getDescription() === $content->description) 
+        $form = $this->createForm(TodoType::class);
+        $nonObject = (array)$content;
+        unset($nonObject['id']);
+        $form->submit($nonObject);
+
+        if (!$form->isValid()) {
+            $errors = [];
+            foreach ($form->getErrors(true, true) as $error) {
+                $propertyName = $error->getOrigin()->getName();
+                $errors[$propertyName] = $error->getMessage();
+            }
+            return $this->json([
+                'message' => ['text' => [join("\n", $errors)], 'level' => 'error']
+            ]);
+        }
+
+        if($todo->getTask() === $content->task && $todo->getDescription() === $content->description) 
         {
             return $this->json([
                 'message' => ['text' => 'There was no change to the To-Do. Neither the name or the description was changed', 'level' => 'error']
             ]);
         }
 
-        $todo->setName($content->name);
+        $todo->setTask($content->task);
         $todo->setDescription($content->description);
 
         try {
@@ -95,8 +127,8 @@ class TodoController extends AbstractController
         }
 
         return $this->json([
-            'message' => ['text' => ['To-Do has been updated', 'Task: ' . $content->name], 'level' => 'success'],
-            'todo' => ['name' => $todo->getName(), 'description' => $todo->getDescription()]
+            'message' => ['text' => ['To-Do has been updated', 'Task: ' . $content->task], 'level' => 'success'],
+            'todo' => ['task' => $todo->getTask(), 'description' => $todo->getDescription()]
         ]);
     }
 

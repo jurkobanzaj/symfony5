@@ -13,7 +13,7 @@ export default function DeleteDialog({ open, setDeleteConfirmationIsShown, todo 
     return (
         <Dialog fullWidth maxWidth="sm" open={open} onClose={closeDialog}>
             <DialogTitle>Are you sure you wish to delete this todo?</DialogTitle>
-            <DialogContent>{todo.name}</DialogContent>
+            <DialogContent>{todo.task}</DialogContent>
             <DialogActions>
                 <Button onClick={closeDialog}>Cancel</Button>
                 <Button
@@ -34,13 +34,13 @@ DeleteDialog.propTypes = {
     setDeleteConfirmationIsShown: PropTypes.func.isRequired,
     todo: PropTypes.shape({
         id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
+        task: PropTypes.string.isRequired,
     }),
 };
 
 DeleteDialog.defaultProps = {
     todo: {
         id: null,
-        name: '',
+        task: '',
     },
 };

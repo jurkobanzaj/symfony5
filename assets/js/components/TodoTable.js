@@ -10,26 +10,26 @@ import DeleteDialog from './DeleteDialog';
 
 export default function TodoTable() {
     const context = useContext(TodoContext);
-    const [addTodoName, setAddTodoName] = useState('');
+    const [addTodoTask, setAddTodoTask] = useState('');
     const [addTodoDescription, setAddTodoDescription] = useState('');
     const [editIsShown, setEditIsShown] = useState(null);
-    const [editTodoName, setEditTodoName] = useState('');
+    const [editTodoTask, setEditTodoTsak] = useState('');
     const [editTodoDescription, setEditTodoDescription] = useState('');
     const [deleteConfirmationIsShown, setDeleteConfirmationIsShown] = useState(false);
     const [todoToDelete, setTodoToDelete] = useState(null);
 
     function onCreateSubmit(e) {
         e.preventDefault();
-        context.createTodo({ name: addTodoName, description: addTodoDescription });
-        setAddTodo('');
+        context.createTodo({ task: addTodoTask, description: addTodoDescription });
+        setAddTodoTask('');
         setAddTodoDescription('');
     }
 
     function onEditSubmit(e, todoId) {
         e.preventDefault();
-        context.updateTodo({ id: todoId, name: editTodoName, description: editTodoDescription });
+        context.updateTodo({ id: todoId, task: editTodoTask, description: editTodoDescription });
         setEditIsShown(false);
-        setEditTodoName('');
+        setEditTodoTsak('');
         setEditTodoDescription('');
     }
 
@@ -48,8 +48,8 @@ export default function TodoTable() {
                         <TableCell>
                             <TextField
                                 type="text"
-                                value={addTodoName}
-                                onChange={(e) => setAddTodoName(e.target.value)}
+                                value={addTodoTask}
+                                onChange={(e) => setAddTodoTask(e.target.value)}
                                 label="New Task"
                                 fullWidth
                             />
@@ -79,13 +79,13 @@ export default function TodoTable() {
                                     {editIsShown === todo.id ? (
                                         <TextField
                                             type="text"
-                                            value={editTodoName}
-                                            onChange={(e) => setEditTodoName(e.target.value)}
+                                            value={editTodoTask}
+                                            onChange={(e) => setEditTodoTsak(e.target.value)}
                                             fullWidth
                                             autoFocus
                                         />
                                     ) : (
-                                        <Typography>{todo.name}</Typography>
+                                        <Typography>{todo.task}</Typography>
                                     )}
                                 </TableCell>
                                 <TableCell>
@@ -106,7 +106,7 @@ export default function TodoTable() {
                                             <IconButton
                                                 onClick={() => {
                                                     setEditIsShown(false);
-                                                    setEditTodoName('');
+                                                    setEditTodoTsak('');
                                                     setEditTodoDescription('');
                                                 }}
                                             >
@@ -121,7 +121,7 @@ export default function TodoTable() {
                                             <IconButton
                                                 onClick={() => {
                                                     setEditIsShown(todo.id);
-                                                    setEditTodoName(todo.name);
+                                                    setEditTodoTsak(todo.task);
                                                     setEditTodoDescription(todo.description);
                                                 }}
                                             >
