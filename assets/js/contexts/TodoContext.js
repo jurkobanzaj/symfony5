@@ -63,7 +63,8 @@ export default class TodoContextProvider extends Component {
                 } else {
                     var todos = [...this.state.todos];
                     let todo = todos.find((todo) => todo.id === data.id);
-                    todo.name = data.name;
+                    todo.name = response.data.todo.name;
+                    todo.description = response.data.todo.description;
                     this.setState({
                         todos,
                         message: response.data.message,

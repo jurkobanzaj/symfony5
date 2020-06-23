@@ -83,3 +83,17 @@
 
 ****PHP****
 	php --ini //displays loaded ini file and it's path
+
+****Entity****
+
+	create: 
+		php bin/console make:entity
+	
+	update:
+		same command, with entity name mentioned right after make or in the next question
+		please do not forget to make migration after updating entity:
+			php bin/console make:migration
+		and apply it afterwards
+			php bin/console doctrine:migrations:migrate
+	NOTE:
+		sqlite don't let to create NOT NULL column with empty cells. So you have to let it be null or to provide default value
