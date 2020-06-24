@@ -1,5 +1,5 @@
 **Create New Project**
-	composer create-project symfony/website-skeleton TodoApp
+		composer create-project symfony/website-skeleton TodoApp
 
 		* Run your application:
 			1. Go to the project directory
@@ -73,33 +73,33 @@
 
 
 **React**
-	install:
-		yarn add @babel/preset-react --dev
- 		yarn add react react-dom prop-types
+		install:
+			yarn add @babel/preset-react --dev
+			yarn add react react-dom prop-types
 
 **Dev server**
-	yarn encore dev --watch
-	/home/yuriy/.symfony/bin/symfony server:start // or symfony server:start if symfony is set globally
+		yarn encore dev --watch
+		/home/yuriy/.symfony/bin/symfony server:start // or symfony server:start if symfony is set globally
 
 **PHP**
-	php --ini //displays loaded ini file and it's path
+		php --ini //displays loaded ini file and it's path
 
 **Entity**
 
-	create: 
-		php bin/console make:entity
-	
-	update:
-		same command, with entity name mentioned right after make or in the next question
-		please do not forget to make migration after updating entity:
-			php bin/console make:migration
-		and apply it afterwards
-			php bin/console doctrine:migrations:migrate
-	NOTE:
-		sqlite don't let to create NOT NULL column with empty cells. So you have to let it be null or to provide default value
+		create: 
+			php bin/console make:entity
+		
+		update:
+			same command, with entity name mentioned right after make or in the next question
+			please do not forget to make migration after updating entity:
+				php bin/console make:migration
+			and apply it afterwards
+				php bin/console doctrine:migrations:migrate
+		NOTE:
+			sqlite don't let to create NOT NULL column with empty cells. So you have to let it be null or to provide default value
 
 **FORM**
 
-	create:
-		php bin/console make:from
-		This creates class and entity. Entity name should be uppercase
+		create:
+			php bin/console make:from
+			This creates class and entity. Entity name should be uppercase
