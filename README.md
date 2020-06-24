@@ -1,4 +1,4 @@
-****Create New Project****
+**Create New Project**
 	composer create-project symfony/website-skeleton TodoApp
 
 		* Run your application:
@@ -43,7 +43,7 @@
 		in webpack.config.js
 
 
-****Database****
+**Database**
 	sudo apt install sqlite // install sqlite
 	sqlite3 todoapp // command to create database
 
@@ -72,19 +72,19 @@
 			delete from todo;
 
 
-****React****
+**React**
 	install:
 		yarn add @babel/preset-react --dev
  		yarn add react react-dom prop-types
 
-****Dev server****
+**Dev server**
 	yarn encore dev --watch
 	/home/yuriy/.symfony/bin/symfony server:start // or symfony server:start if symfony is set globally
 
-****PHP****
+**PHP**
 	php --ini //displays loaded ini file and it's path
 
-****Entity****
+**Entity**
 
 	create: 
 		php bin/console make:entity
@@ -98,7 +98,7 @@
 	NOTE:
 		sqlite don't let to create NOT NULL column with empty cells. So you have to let it be null or to provide default value
 
-****FORM****
+**FORM**
 
 	create:
 		php bin/console make:from
